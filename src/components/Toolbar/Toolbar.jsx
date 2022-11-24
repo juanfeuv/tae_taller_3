@@ -38,8 +38,8 @@ function DrawerAppBar() {
             <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
               Accidentalidad en Medellín
             </Typography>
-            <Button color="inherit" href="https://github.com/juanfeuv/tae_taller_1/blob/main/Reporte%20T%C3%A9cnico%20de%20agrupaci%C3%B3n%20de%20universidades.docx.pdf" target="_blank" rel="noreferrer">Reporte</Button>
-            <Button color="inherit" href="https://youtu.be/yLuoTi10vbY" target="_blank" rel="noreferrer">Video</Button>
+            <Button color="inherit" href="https://github.com/joscanoga/prediccion-de-incidentes-viales-en-la-ciudad-de-Medellin" target="_blank" rel="noreferrer">Reporte</Button>
+            <Button color="inherit" href="" target="_blank" rel="noreferrer">Video</Button>
             <ClickAwayListener onClickAway={handleTooltipClose}>
               <div>
                 <Tooltip

@@ -13,9 +13,6 @@ const updatePercentiles = (featureCollection) => {
       name: f.properties.NOMBRE,
       type: "Feature",
       code: f.properties.CODIGO,
-      properties: {
-        name: f.properties.NOMBRE,
-      },
       geometry: f.geometry,
     };
   });
@@ -46,17 +43,20 @@ const getBarrios = (query = {}) => {
 
   const { year, clase } = query;
 
-  return data.map(item => {
-    const { properties } = item;
-
+  return data.map(({ name, ...item }) => {
     const accd = (grouped[Number(item.code) || item.code] || [])
       .filter(acc => acc.clase === _.lowerCase(clase?.value) && acc.year === year?.value);
     const cantidad = accd.length || 0;
 
+    const findName = Accidentes.find(barrio => _.includes([Number(item.code), item.code], barrio.code))?.barrio;
+
+    const nameParsed = _.capitalize(findName) || name;
+
     return {
       ...item,
+      name: nameParsed,
       properties: {
-        ...properties,
+        name: nameParsed,
         percentile: cantidad,
         value: cantidad,
       }
